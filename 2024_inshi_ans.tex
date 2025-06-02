@@ -1,0 +1,205 @@
+\documentclass[a4j,dvipdfmx]{jarticle}%% platex math_matome &&platex math_matome && mendex -s math_matome -g -l math_matome && platex math_matome &&platex math_matome && dvipdfmx math_matome
+\usepackage{hyperref} %リンクを有効にする
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    linkcolor=black,
+}
+\newcommand{\headfont}{\mcfamily\rmfamily}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc}
+
+\pagestyle{headings}
+
+\usepackage{url} 
+\usepackage{amsmath,amssymb} %もちろん
+\usepackage{amsfonts,amsthm,mathtools} %もちろん
+\usepackage{braket,physics} %あると便利なやつ
+\usepackage{titlesec}%見出しの見た目を編集できる
+\usepackage{bm} 
+\usepackage{here} 
+\usepackage[top=20truemm,bottom=10truemm,left=10truemm,right=10truemm]{geometry} %余白設定
+\usepackage{latexsym} %ごくたまに必要になる
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{cancel}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}} 
+
+
+\allowdisplaybreaks[4]
+\title{院試数学解答}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}%ハイライトなどの装飾に使う https://qiita.com/t_kemmochi/items/483b8fcdb5db8d1f5d5e
+
+\newtcbtheorem{theorem}{Theorem}{enhanced, 
+    attach boxed title to top left = {xshift=5mm,yshift=-3mm},
+    boxed title style = {colframe = blue, colback = white},
+    coltitle = black,
+    colback = white,
+    colframe = blue,
+    fonttitle = \bfseries,
+    breakable = true,
+    top = 4mm
+}{}
+
+\newtcbtheorem{definition}{Definition}{enhanced, 
+    attach boxed title to top left = {xshift=5mm,yshift=-3mm},
+    boxed title style = {colframe = red, colback = white},
+    coltitle = black,
+    colback = white,
+    colframe = red,
+    fonttitle = \bfseries,
+    breakable = true,
+    top = 4mm
+}{}
+
+%定理の書き方
+
+% \begin{theorem}{}
+%     三次元極座標において，
+% \[\nabla^2=\frac{1}{r^2}\pdv{r}\left(r^2\pdv{r}\right)+\frac{1}{r^2\sin\theta}\pdv{\theta}\left(\sin\theta\pdv{\theta}\right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{\varphi}.\]        %physicsパッケージの\pdvを使って書くのをラクにしている.
+% \end{theorem}
+
+\tcbuselibrary{theorems,skins} 
+
+%索引 theindex 環境
+\usepackage{makeidx}\makeindex
+
+\newcommand\myprintindex{	% 索引を目次に追加
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{\indexname}
+	\printindex
+}
+
+\newtcolorbox{marker}[1][]{enhanced,%注意書き
+  before skip=2mm,after skip=3mm,
+  boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+  colback=yellow!50,
+  colframe=yellow!20!black,
+  sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+  underlay={%
+    \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+  drop fuzzy shadow,#1}
+  
+  \newcommand{\hosoku}{\noindent %補足 「 \hosoku 」でつかう
+  \begin{tikzpicture}[scale=0.17, baseline=2.8pt]
+  \draw (6,1) node{\textgt{補足}};
+  \fill (0,1)--(1,0)--(2,1)--(1,2)--cycle;
+  \fill[gray] (1,1)--(2,0)--(3,1)--(2,2)--cycle;
+  \fill (2,1)--(3,0)--(4,1)--(3,2)--cycle;
+  \fill (10,1)--(11,0)--(12,1)--(11,2)--cycle;
+  \fill[gray] (9,1)--(10,0)--(11,1)--(10,2)--cycle;
+  \fill (8,1)--(9,0)--(10,1)--(9,2)--cycle;
+  \end{tikzpicture}\;}
+
+  \newcommand{\bekkai}%別解 「 \bekkai 」でつかう
+{\noindent
+\begin{tikzpicture}[scale=0.2, baseline=2.8pt]
+\draw (3.3,1) node{\textgt{別 解}};
+\draw[double,thick,rounded corners=3pt,] (0,0)--(6.5,0)--(6.5,2.2)--(0,2.2)--cycle;
+\end{tikzpicture}\;}
+
+\titleformat{\section}[block]
+{}{}{0pt}
+{
+  \rmfamily\huge\centering
+}
+[
+\begin{picture}(100,0)
+  \put(-220,22){\color{black}\line(1,0){540}}
+\end{picture}
+\\
+\vspace{-30pt}
+]
+
+\definecolor{lightgray}{rgb}{0.75,0.75,0.75}
+\makeatletter
+\renewenvironment{leftbar}{%
+\def\FrameCommand{\vrule width 1pt \hspace{10pt}}%
+\MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+\makeatother
+\newenvironment{mondaileftbar}{%
+\def\FrameCommand{\textcolor{lightgray}{\vrule width 8pt} \hspace{5pt}}%
+\MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+\newcommand{\exbf}[2]{ \begin{leftbar} \textbf{#1} #2 \end{leftbar} }%左線つき太字
+\newcommand{\barquo}[1]{\begin{leftbar} \noindent #1  \end{leftbar}}%左線つき引用
+
+\newcommand{\kaitou}[1] %解答
+{\noindent
+\large{\underline{解答}}
+\begin{leftbar} #1 \end{leftbar}}
+\newcommand{\mondai}[1] %問題
+{\noindent \large{\underline{問題}}\begin{mondaileftbar} #1 \begin{tikzpicture}[scale=0.25,baseline=1pt]
+    \draw[thick,lightgray] (0,0) -- (72,0);
+    \end{tikzpicture}
+\end{mondaileftbar}
+}
+\setlength\intextsep{0pt}
+
+\renewcommand{\CancelColor}{\color{red}}
+
+
+\usepackage{ulem}
+\usepackage{niceframe}
+%ここから本文．
+
+\begin{document}
+\mondai{
+座標空間内に点$P(0,0,1)$をとる．また，$x=2y^2$で定まる$xy$平面上の曲線$C$上に点$Q$をとる．
+さらに，点$Q$の$y$座標が$0\leqq y \leqq \tfrac{1}{\sqrt{2}}$の範囲を動くとき，線分$PQ$が通過してできる曲面を$D$とする．このとき，$D$を$x$軸まわりに一回転してできる立体の体積$V$を求めよ.
+}
+\kaitou{
+曲面$D$の$x=s$における断面に現れる曲線を$D_{x=s}$とする．また，条件より$0\leqq x\leqq 1$. \\
+~~題意より，点$R\in D$のとき，この点は$C$上のある点$Q$に対して線分$PQ$を内分する点である．この点$Q$をここでは$Q_R(x_R,\sqrt{x_R/2},0)$とする．このとき，
+\begin{align}
+    \exists t,~0\leqq t\leqq 1~~ s.t.~~ \overrightarrow{\mathrm{OR}} &= (1-t)\overrightarrow{\mathrm{OP}} + t\overrightarrow{\mathrm{OQ}} \nonumber \\
+    &= (1-t)\begin{pmatrix}
+    0 \\ 0 \\ 1
+    \end{pmatrix} + t\begin{pmatrix}
+    x_R \\ \sqrt{x_R/2} \\ 0
+    \end{pmatrix} \nonumber \\
+    &= \begin{pmatrix}
+    tx_R \\ t\sqrt{x_R/2} \\ 1-t
+    \end{pmatrix} 
+\end{align}
+さらに，点$R\in D_{x=s}$のとき$tx_R=s$であるから，
+\begin{align}
+    \overrightarrow{\mathrm{OR}} &= \begin{pmatrix}
+    s \\ s\sqrt{1/(2x_R)}\\ 1-s/x_R
+    \end{pmatrix} ~,~~s \leqq x_R\leqq 1
+\end{align}
+ここで，$x_R$は$D_{x=s}$上の点とは限らないことに注意．以上より，
+\begin{align}
+    \norm{\overrightarrow{\mathrm{OR}}}^2 &= \left(s\sqrt{\frac{1}{2x_R}}\right)^2 + \left(1-\frac{s}{x_R}\right)^2 \nonumber \\
+    &=\frac{s^2}{2x_R} + \left(1-\frac{s}{x_R}\right)^2 
+\end{align}
+$D$を$x$軸まわりに回転させるとき，断面$D_{x=s}$は$x$軸まわりに回転して円環を形成する．この円環は$\norm{\overrightarrow{\mathrm{OR}}}$の最大値を半径とする円と，最小値を半径とする円に囲まれた領域である．よってここからは，式(3)を$f_s(x_R)$とおいて，その最大最小を考える．ただし，$f_s(0)$については，式(1)と各変数の定義より例外として$0～1$の任意の値を取るとする．
+\begin{enumerate}[i)]
+    \item 最大値\\
+\begin{align}
+    f'_s(x) &= \frac{s}{2x^3}\left(x(4-s)-4s\right) 
+\end{align}
+より，
+\end{enumerate}
+}
+
+\end{document}
