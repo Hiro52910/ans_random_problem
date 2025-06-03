@@ -169,7 +169,91 @@
 }
 \kaitou{
 曲面$D$の$x=s$における断面に現れる曲線を$D_{x=s}$とする．また，条件より$0\leqq x\leqq 1$. \\
-~~題意より，点$R\in D$のとき，この点は$C$上のある点$Q$に対して線分$PQ$を内分する点である．この点$Q$をここでは$Q_R(x_R,\sqrt{x_R/2},0)$とする．このとき，
+~~題意より，点$R\in D$のとき，この点は$C$上のある点$Q$に対して線分$PQ$を内分する点である．この点$Q$をここでは$Q_R(x_R,\sqrt{x_R/2},0)$とする．
+
+\begin{center} % ← 省いても可
+\begin{tikzpicture}[>=Latex,line join=round,scale=1.05]
+
+% 斜投影ベクトル（y→(4,1.5)，z→(0,1)）
+\def\YvX{4}
+\def\YvZ{1}
+
+% 座標軸
+\draw[->] (-0.8,0) -- (7,0) node[below] {$x$};
+\draw[->] (0,-1)   -- (0,4) node[left]  {$z$};
+\draw[->] (0,0)    -- ++(\YvX*1.2,\YvZ*1.2) node[right] {$y$};
+
+% 原点・P
+\coordinate (O) at (0,0.2);  \node[left] at (O) {$O$};
+\coordinate (P) at (0,3);  \node[left] at (P) {$P$};
+
+%-------------------------------------------------------
+% 曲線  x = 2y^2  （y : 0 → 1.2）
+%  y_Q ≈ 1.12  →  x_Q ≈ 7
+%-------------------------------------------------------
+\pgfmathsetmacro{\yQ}{0.9}
+\pgfmathsetmacro{\yEnd}{1}
+
+\draw[thick,samples=120,smooth,domain=0:\yEnd,variable=\t]
+      plot({2*\t*\t + \YvX*\t},{\YvZ*\t});
+
+\coordinate (Q) at ({2*\yQ*\yQ + \YvX*\yQ},{\YvZ*\yQ});
+\node[below] at (Q) {$Q$};
+\node[right] at (6,1.5) {$x = 2y^{2}$};
+
+% 線分 OP と PQ
+\draw           (O) -- (P);
+\draw[dashed]   (P) -- (Q);
+
+%-------------------------------------------------------
+% 断面多角形（平面 x = s）
+%-------------------------------------------------------
+\pgfmathsetmacro{\s}{0.9}
+\pgfmathsetmacro{\rectW}{0.9}
+\pgfmathsetmacro{\rectH}{2.7}
+
+\coordinate (A) at (\s,0);
+\coordinate (B) at (\s,\rectH);
+\coordinate (D) at ($ (A) + (\rectW*\YvX,\rectW*\YvZ) $);
+\coordinate (C) at ($ (B) + (\rectW*\YvX,\rectW*\YvZ) $);
+
+\filldraw[draw=black,very thick,fill=gray!30,opacity=.4]
+         (A)--(B)--(C)--(D)--cycle;
+\node at ($(A)!0.5!(C)$) {$D_{x=s}$};
+\node[below] at (A) {$s$};
+
+%-------------------------------------------------------
+% 点 R ＝ PQ ∩ 平面 x=s
+%-------------------------------------------------------
+\pgfmathsetmacro{\xQ}{2*\yQ*\yQ + \YvX*\yQ}   % Q の投影 x
+\pgfmathsetmacro{\lam}{\s/\xQ}                 % 内分比 λ
+
+
+
+% ======== 《差し替え用コード》ここから =========
+\pgfmathsetmacro{\xQ}{2*\yQ*\yQ + \YvX*\yQ}   % Q の投影 x
+\pgfmathsetmacro{\lam}{\s/\xQ}                 % 内分比 λ
+
+\coordinate (R) at ($(P)!0.5!(Q)$);
+\fill[black] (R) circle (2pt) node[below right=-1pt] {$R$};
+
+% --- 内分を示す２本の弧 ---------------------------------
+% 弧の「ふくらみ具合」は bend left=〈角度〉 で調整
+\draw[line width=0.9pt]
+      (P) to[bend left=25] (R);
+\draw[line width=0.9pt]
+      (R) to[bend left=25] (Q);
+
+% --- ラベル 1–t, t を弧の中央やや上に配置 ---------------
+\node at ($ (P)!0.5!(R) + (0.1,0.5) $) {$1-t$};
+\node at ($ (R)!0.5!(Q) + (0,0.35) $) {$t$};
+% ======== 《差し替え用コード》ここまで =========
+
+\end{tikzpicture}
+\end{center}
+
+
+このとき，
 \begin{align}
     \exists t,~0\leqq t\leqq 1~~ s.t.~~ \overrightarrow{\mathrm{OR}} &= (1-t)\overrightarrow{\mathrm{OP}} + t\overrightarrow{\mathrm{OQ}} \nonumber \\
     &= (1-t)\begin{pmatrix}
@@ -189,17 +273,78 @@
 \end{align}
 ここで，$x_R$は$D_{x=s}$上の点とは限らないことに注意．以上より，
 \begin{align}
-    \norm{\overrightarrow{\mathrm{OR}}}^2 &= \left(s\sqrt{\frac{1}{2x_R}}\right)^2 + \left(1-\frac{s}{x_R}\right)^2 \nonumber \\
+    \norm*{\overrightarrow{\mathrm{OR}}}^2 &= \left(s\sqrt{\frac{1}{2x_R}}\right)^2 + \left(1-\frac{s}{x_R}\right)^2 \nonumber \\
     &=\frac{s^2}{2x_R} + \left(1-\frac{s}{x_R}\right)^2 
 \end{align}
-$D$を$x$軸まわりに回転させるとき，断面$D_{x=s}$は$x$軸まわりに回転して円環を形成する．この円環は$\norm{\overrightarrow{\mathrm{OR}}}$の最大値を半径とする円と，最小値を半径とする円に囲まれた領域である．よってここからは，式(3)を$f_s(x_R)$とおいて，その最大最小を考える．ただし，$f_s(0)$については，式(1)と各変数の定義より例外として$0～1$の任意の値を取るとする．
+$D$を$x$軸まわりに回転させるとき，断面$D_{x=s}$は$x$軸まわりに回転して円環を形成する．この円環は$\norm*{\overrightarrow{\mathrm{OR}}}$の最大値を半径とする円と，最小値を半径とする円に囲まれた領域である．よってここからは，式(3)を$f_s(x_R)$とおいて，その最大最小を考える．ただし，$f_s(0)$については，式(1)と各変数の定義より例外として$0～1$の任意の値を取るとする．
 \begin{enumerate}[i)]
     \item 最大値\\
+    以下，$x\neq 0$と仮定する．
 \begin{align}
     f'_s(x) &= \frac{s}{2x^3}\left(x(4-s)-4s\right) 
 \end{align}
 より，
+\begin{align}
+    x &= \frac{4s}{4-s} := x_0
+\end{align}
+で$f'(x)=0$. よって，$x_0\leqq 1$のとき，増減表は
+\begin{center}
+\begin{tabular}{|c||ccccc|}
+\hline
+$x$ & $s$  &  $\cdots$ & $x_0$ & $\cdots$ & 1\\
+\hline
+$f_s'(x)$&  &$-$ & $0$ & $+$ &  \\
+\hline
+$f_s(x)$ & &$\searrow$ & & $\nearrow$ &  \\
+\hline
+\end{tabular}
+\end{center}
+，$x_0>1$のとき，増減表は
+\begin{center}
+\begin{tabular}{|c||ccc|}
+\hline
+$x$ & $s$  &  $\cdots$ &  1\\
+\hline
+$f_s'(x)$&  &$-$ &  \\
+\hline
+$f_s(x)$ & &$\searrow$ &   \\
+\hline
+\end{tabular}
+\end{center}
+ゆえに，いずれの場合においても$f_s(x)$が最大値を取るためには$x=s,1$であることが必要．
+\begin{align}
+    f_s(s) &= 1-2s+\frac{3}{2}s^2 \\
+    f_s(1) &= s/2
+\end{align}
+で, $s=2/3$のとき$f_s(s)=f_s(1)$．以上より，
+\begin{align}
+    \max_{s \leqq x\leqq 1}f_s(x) &=\begin{cases}
+    1-2s+\frac{3}{2}s^2 & (0 < s\leqq 2/3) \\
+ s/2 & (2/3\leqq s \leqq 1)
+    \end{cases}
+\end{align}
+これは$x=0$の場合も成り立つ．
+\item 最小値\\
+最大値と同様に，$x_0$の値に注意しつつ，
+\begin{align}
+    f_s(s) &= 1-2s+\frac{3}{2}s^2 \\
+    f_s(x_0) &= \frac{s}{2}\left(1-\frac{s}{8}\right)
+\end{align}
+の値を比較して
+\begin{align}
+    \min_{s \leqq x\leqq 1}f_s(x) &=\begin{cases}
+    \frac{s}{2}\left(1-\frac{s}{8}\right) &(0 \leqq s\leqq 4/5) \\
+     1-2s+\frac{3}{2}s^2 & (4/5\leqq s \leqq 1)
+    \end{cases}
+\end{align}
+を得る．
 \end{enumerate}
+以上より，$D_{x=s}$を$x$軸周りに一回転させたときの面積$S(s)$は
+\begin{abstract}
+\begin{align}
+    S(s) &= \pi 
+\end{align}
+\end{abstract}
 }
 
 \end{document}

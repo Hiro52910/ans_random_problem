@@ -1,9 +1,9 @@
-This is e-pTeX, Version 3.141592653-p3.9.1-210218-2.6 (utf8.euc) (TeX Live 2022/dev/Debian) (preloaded format=platex 2024.6.28)  2 JUN 2025 14:09
+This is e-pTeX, Version 3.141592653-p3.9.1-210218-2.6 (utf8.euc) (TeX Live 2022/dev/Debian) (preloaded format=platex 2024.6.28)  3 JUN 2025 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/home/nezu/program/latex/ans_random_problem/2024_inshi_ans
-(/home/nezu/program/latex/ans_random_problem/2024_inshi_ans.tex
+**/home/nezu/program/latex/ans_random_problem/ans
+(/home/nezu/program/latex/ans_random_problem/ans.tex
 pLaTeX2e <2021-11-15> (based on LaTeX2e <2021-11-15> patch level 1)
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/platex/base/jarticle.cls
@@ -891,10 +891,10 @@ Library (tcolorbox): 'tcbtheorems.code.tex' version '5.0.2'
 Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 )
 \@indexfile=\write4
-\openout4 = `2024_inshi_ans.idx'.
+\openout4 = `ans.idx'.
 
 
-Writing index file 2024_inshi_ans.idx
+Writing index file ans.idx
 (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box163
 \UL@hyphenbox=\box164
@@ -920,8 +920,8 @@ Package: niceframe v1.1c <2009/31/08> (Marcus Ohlhaut)
 \fr@mecharLL=\skip71
 \fr@mewidth=\skip72
 \fr@meheight=\skip73
-) (./2024_inshi_ans.aux)
-\openout1 = `2024_inshi_ans.aux'.
+) (./ans.aux)
+\openout1 = `ans.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 165.
 LaTeX Font Info:    ... okay on input line 165.
@@ -946,8 +946,7 @@ LaTeX Font Info:    ... okay on input line 165.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 165.
 LaTeX Font Info:    ... okay on input line 165.
 Package hyperref Info: Link coloring ON on input line 165.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -962,9 +961,9 @@ LaTeX Info: Redefining \ref on input line 165.
 LaTeX Info: Redefining \pageref on input line 165.
 LaTeX Info: Redefining \nameref on input line 165.
 
-(./2024_inshi_ans.out) (./2024_inshi_ans.out)
+(./ans.out) (./ans.out)
 \@outlinefile=\write5
-\openout5 = `2024_inshi_ans.out'.
+\openout5 = `ans.out'.
 
 
 *geometry* detected driver: dvipdfm
@@ -1024,19 +1023,23 @@ cmm/m/it/12 y \U/msa/m/n/12 5 []$ \JY1/mc/m/n/12 の範囲を動くとき ， �
 /cmm/m/it/12 PQ$ \JY1/mc/m/n/12 が通過してで
  []
 
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 348.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 348.
 [1
 
-] (./2024_inshi_ans.aux)
-Package rerunfilecheck Info: File `2024_inshi_ans.out' has not changed.
+] [2] (./ans.aux)
+Package rerunfilecheck Info: File `ans.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28188 strings out of 478741
- 570700 string characters out of 5860982
- 941187 words of memory out of 5000000
- 46122 multiletter control sequences out of 15000+600000
- 482021 words of font info for 80 fonts, out of 8000000 for 9000
+ 28822 strings out of 478741
+ 582724 string characters out of 5860982
+ 983148 words of memory out of 5000000
+ 46738 multiletter control sequences out of 15000+600000
+ 487186 words of font info for 101 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 84i,24n,89p,435b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,27n,89p,424b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 2024_inshi_ans.dvi (1 page, 6416 bytes).
+Output written on ans.dvi (2 pages, 26140 bytes).
